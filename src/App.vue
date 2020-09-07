@@ -17,7 +17,7 @@
       </v-container>
       <v-container v-else>
         <div v-if="isNotTodo" class="d-flex flex-column align-center mt-5">
-          <h2 class="text-center">Добавьте TODO</h2>
+          <h2 class="text-center">Create TODO</h2>
           <v-btn dark fab color="pink" class="mt-4" @click="isShowForm = true">
             <v-icon>mdi-plus</v-icon>
           </v-btn>
@@ -89,33 +89,34 @@ export default {
       return !this.listTodo.length;
     },
     listTodoFilter() {
-      return this.listTodo.filter((todo) =>
-        todo.description.toLowerCase().includes(this.searchText.toLowerCase())
+      return this.listTodo.filter(
+        (todo) =>
+          todo.description
+            .toLowerCase()
+            .includes(this.searchText.toLowerCase()) &&
+          todo.tags.filter((tag) => this.chosenTags.includes(tag)).length
       );
     },
-    // searchTags() {
-    //   return this.listTodo.filter((todo) =>
-    //     todo.tags.filter((tag) => this.chosenTags.includes(tag))
-    //   );
-    // },
   },
   created() {
     this.chosenTags = [...listTags];
     setTimeout(() => {
       this.listTodo = [
         {
-          id: "ferfsdf",
+          id: "1",
           title: "1",
           tags: ["later"],
-          description: "data.description",
+          description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           isFixed: false,
           date: new Date(),
         },
         {
-          id: "ferfsd",
+          id: "2",
           title: "2",
           tags: ["tomorrow"],
-          description: "description",
+          description:
+            "Rem dignissimos error, quo, necessitatibus tempore quaerat consequuntur iusto magnam vel ad inventore asperiores officia molestias! Esse aliquid consectetur quasi temporibus officiis?",
           isFixed: true,
           date: new Date(),
         },
